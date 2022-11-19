@@ -92,11 +92,11 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
     // Fallback for older browsers where can not set SameSite=None,
     // SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
     if (sameSite === SAME_SITE_OPTIONS.NONE) {
-      Cookies.set(getLegacyCookieName(cookieName), cookieValue, cookieOptions);
+      Cookies.set(getLegacyCookieName(cookieName), JSON.stringify(cookieValue), cookieOptions);
     }
 
     // set the regular cookie
-    Cookies.set(cookieName, cookieValue, cookieOptions);
+    Cookies.set(cookieName, JSON.stringify(cookieValue), cookieOptions);
   }
 
   /**
