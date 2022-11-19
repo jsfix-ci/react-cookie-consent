@@ -8,11 +8,11 @@ import { defaultCookieConsentName } from "./models/constants";
  * @param {*} name optional name of the cookie
  */
 export const getCookieConsentValue = (name = defaultCookieConsentName) => {
-  const cookieValue = Cookies.get(name);
+  const cookieValue = JSON.parse(Cookies.get(name));
 
   // if the cookieValue is undefined check for the legacy cookie
   if (cookieValue === undefined) {
-    return Cookies.get(getLegacyCookieName(name));
+    return JSON.parse(Cookies.get(getLegacyCookieName(name)));
   }
   return cookieValue;
 };
